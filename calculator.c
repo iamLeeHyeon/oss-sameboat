@@ -17,7 +17,7 @@ int main() {
 		z = a - c; // 오재식
 	}
 	else if (c == '*') {
-
+      		z = a * c; // 윤예성
 	}
 	else if (c == '/') {
 
