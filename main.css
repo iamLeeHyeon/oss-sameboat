@@ -1,0 +1,92 @@
+.content{height:100vh; background:#ccc; margin:0 auto; position:relative;}
+.head{
+  height:50px;
+  box-shadow: 0 3px 10px rgba(106,106,106,.15);             background:#fff;
+}
+.head .menu{
+  width:50px;
+  height:100%;
+  position:relative;
+}
+.head .menu .res-menu{
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:20px; height:12px;
+  transform:translate(-50%, -50%);
+  cursor:pointer;
+}
+.head .menu .res-menu span{
+  display:block;
+  position:absolute;
+  width:100%;
+  height:2px;
+  background:#333;
+  border-radius:2px;
+  transition: transform .3s;
+}
+.head .menu span:nth-child(1){
+  top:0;left:0; 
+}
+.head .menu span:nth-child(2){
+  top:50%; left:50%;
+  transform:translate(-50%, -50%);
+}
+.head .menu span:nth-child(3){
+  bottom:0;left:0;
+}
+#sideopen {display:none;}
+
+.head input[type="checkbox"]:checked + label > .res-menu  span:nth-child(1){
+  top:50%;
+  transform:translateY(-50%) rotate(-45deg);
+}
+.head input[type="checkbox"]:checked + label > .res-menu  span:nth-child(2){
+  display:none;
+}
+.head input[type="checkbox"]:checked + label > .res-menu  span:nth-child(3){
+  top:50%;
+  transform:translateY(-50%) rotate(45deg);
+}
+
+.menu-background{
+  position:fixed; /* fixed */
+  top:50px;
+  left:-70%;
+  transition:left .5s;              
+  float: left;
+  width: 250px;
+  height: 100%;
+  border: 1px solid rgb(127, 127, 127);
+  box-shadow: 0 0 15px -5px rgba(0,0,0,0.4);
+  border-radius:8px;
+  transform: translate(0px, -4px);
+}
+.head input[type="checkbox"]:checked + label + .menu-background{
+  left:0;
+}
+
+            ul{
+    margin:0;
+    padding:0;
+}
+li{
+    list-style-type:none;
+}
+a{
+    display:block;
+    padding:5px 30px;
+    border-bottom:1px solid #DDD;
+    text-transform:uppercase;
+    text-decoration:none;
+    font-weight:bold;
+    color:#333;
+}
+a:hover{
+    color:#fff;
+    background:#111;
+}
+            #main_page{
+            background-color:darkgrey;
+            }
+
