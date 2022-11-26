@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link  href="main.css"  rel="stylesheet" tpye="text/css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.15.5/xlsx.full.min.js"></script>
   <script
   src="https://code.jquery.com/jquery-3.6.0.min.js"
   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
@@ -13,7 +14,7 @@
   <title>SAMPLE</title>
 </head>
 <body>
-  <div class="content">
+  <div class="content" id="content">
     <div class="header">
       <div class="head">
         <div class="menu">
@@ -40,6 +41,8 @@
       </div><!-- head --> 
     </div><!-- header -->
     
+    <button onclick="readExcel()"></button>
+    <input type="file" onchange="readExcel()">
   </div>
   <script src="./main.js"></script>
 </body>
