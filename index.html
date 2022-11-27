@@ -35,14 +35,35 @@
                 <li id="sauce"><a href="sauce.html">소스</a></li>
                 <li id="fruits"><a href="fruits.html">과일</a></li>
                 <li id="etc"><a href="etc.html">etc</a></li>
-
         </div>
         </div>
       </div><!-- head --> 
     </div><!-- header -->
-    
-    <button onclick="readExcel()"></button>
-    <input type="file" onchange="readExcel()">
+    <a href="#" class="btn" tilte="불러오기" onclick="saveExcel()">
+    <span>저장하기</span>
+  </a>
+  <div class="table_wrap pc_view">
+    <table class="tavle t_list" id="test">
+      <thead>
+        <tr>
+          <th>항목1</th>
+          <th>항목2</th>
+          <th>항목3</th>
+        </tr>
+      </thead>
+      <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>2022-04-11</td>
+      </tr>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+    <button> 불러오기 <input type="file" onchange="readExcel()"> </button>
   </div>
   <script src="./main.js"></script>
 </body>

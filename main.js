@@ -18,3 +18,10 @@ function readExcel() {
 
   reader.readAsBinaryString(input.files[0]);
 }
+
+function saveExcel() {
+  let wb = XLSX.utils.book_new();
+  let ws = XLSX.utils.table_to_sheet(document.getElementById("test"));
+  XLSX.utils.book_append_sheet(wb, ws, "sheet title");
+  XLSX.writeFile(wb,"엑셀.xlsx");
+}
