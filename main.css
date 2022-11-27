@@ -60,13 +60,14 @@
   border: 1px solid rgb(127, 127, 127);
   box-shadow: 0 0 15px -5px rgba(0,0,0,0.4);
   border-radius:8px;
-  transform: translate(0px, -4px);
+  background: white;
+  transform: translate(5px, 0px);
 }
 .head input[type="checkbox"]:checked + label + .menu-background{
   left:0;
 }
 
-            ul{
+ul{
     margin:0;
     padding:0;
 }
@@ -85,8 +86,7 @@ a{
 a:hover{
     color:#fff;
     background:#111;
+    }
+#main_page{
+    background-color:darkgrey;
 }
-            #main_page{
-            background-color:darkgrey;
-            }
-
