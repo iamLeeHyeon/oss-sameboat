@@ -1,0 +1,123 @@
+.content{height:100vh; background:rgb(240, 240, 240); margin:0 auto; position:relative;}
+.head{
+  height:50px;
+  box-shadow: 0 3px 10px rgba(106,106,106,.15);             
+  background:#fff;
+  position:sticky;
+}
+.head .menu{
+  width:50px;
+  height:100%;
+  position:relative;
+}
+.head .menu .res-menu{
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:20px; height:12px;
+  transform:translate(-50%, -50%);
+  cursor:pointer;
+}
+.head .menu .res-menu span{
+  display:block;
+  position:absolute;
+  width:100%;
+  height:2px;
+  background:#333;
+  border-radius:2px;
+  transition: transform .3s;
+}
+.head .menu span:nth-child(1){
+  top:0;left:0; 
+}
+.head .menu span:nth-child(2){
+  top:50%; left:50%;
+  transform:translate(-50%, -50%);
+}
+.head .menu span:nth-child(3){
+  bottom:0;left:0;
+}
+#sideopen {display:none;}
+
+.head input[type="checkbox"]:checked + label > .res-menu  span:nth-child(1){
+  top:50%;
+  transform:translateY(-50%) rotate(-45deg);
+}
+.head input[type="checkbox"]:checked + label > .res-menu  span:nth-child(2){
+  display:none;
+}
+.head input[type="checkbox"]:checked + label > .res-menu  span:nth-child(3){
+  top:50%;
+  transform:translateY(-50%) rotate(45deg);
+}
+
+.menu-background{
+  position:fixed; /* fixed */
+  top:50px;
+  left:-70%;
+  transition:left .5s;
+  float: left;
+  width: 250px;
+  height: 90%;
+  border: 1px solid rgb(226, 226, 226);
+  box-shadow: 0 0 15px -5px rgba(0,0,0,0.4);
+  border-radius:8px;
+  background: white;
+  transform: translate(18px, 15px);
+  box-sizing: border-box;
+}
+.head input[type="checkbox"]:checked + label + .menu-background{
+  left:0;
+}
+.main-box{
+  width:60%;
+  height:90%;
+  transform: translate(255px, 0px);
+  box-shadow: 0 0 15px -5px rgba(0,0,0,0.4);
+  border-radius:8px;
+  background: white;
+  border: 1px solid rgb(226, 226, 226);
+  position:absolute;
+  top:50px;
+  margin: 15px;
+}
+ul{
+    margin:0;
+    padding:0;
+}
+li{
+    list-style-type:none;
+}
+a{
+    display:block;
+    padding:5px 10px;
+    -webkit-box-align: center;
+    align-items: center;
+    border-bottom:1px solid #DDD;
+    text-transform:uppercase;
+    text-decoration:none;
+    font-weight:bold;
+    font-size: 16px;
+    color:rgb(163, 163, 163);
+    border:none;
+    margin: 10px;
+    
+}
+a:hover{
+    color:rgb(0, 0, 0);
+    background:rgb(226, 226, 226);
+    border-radius: 10px;
+    transition: 0.2s ease;
+}
+.z-index0{
+  z-index: 0;
+}
+.z-index1{
+  z-index: 1;
+}
+.z-index2{
+  z-index: 2;
+}
+.z-index3{
+  z-index: 3;
+} /*우선순위
