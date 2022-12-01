@@ -25,3 +25,12 @@ function saveExcel() {
   XLSX.utils.book_append_sheet(wb, ws, "sheet title");
   XLSX.writeFile(wb,"엑셀.xlsx");
 }
+  const idx = 1;
+function addText() {
+  const name = document.getElementById('add_text').value;
+  const td = document.createElement("td");
+  td.setAttribute('id',name);
+  const textNode = document.createTextNode(name);
+  td.appendChild(textNode);
+  document.getElementById("addTable").appendChild(td);
+}

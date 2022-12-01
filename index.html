@@ -45,16 +45,12 @@
   <div class="table_wrap pc_view">
     <table class="tavle t_list" id="test">
       <thead>
-        <tr>
-          <th>항목1</th>
-          <th>항목2</th>
-          <th>항목3</th>
+        <tr id="addTitle">
+
         </tr>
       </thead>
-      <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
+      <tr id="addTable">
+
       </tr>
       <tr>
         <td>2022-04-11</td>
@@ -64,7 +60,12 @@
     </table>
   </div>
     <button> 불러오기 <input type="file" onchange="readExcel()"> </button>
+    <div>
+      <input id= "add_text" tpye="text"><button id="add" onclick="addText()"> 추가</button>
+    </div>
+    <div id="text"></div>
   </div>
+
   <script src="./main.js"></script>
 </body>
 </html>
