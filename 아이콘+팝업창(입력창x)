@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>/*css 파트*/
+
+
+
+
+.edit{ /* edit icon 생성 */
+    position: absolute;
+    top:670px;
+    left: 89%;    
+    width: 24px;
+    height: 24px;    
+   
+    display: inline-block;
+    cursor: pointer;
+    
+    flex-wrap: nowrap;
+
+    visibility:collapse;
+  
+}
+.add{ /* add icon 생성*/
+    position: absolute;
+    top:735px;
+    left: 89%;    
+    width: 24px;
+    height: 24px;    
+    display: inline-block;
+    cursor: pointer;
+    flex-wrap: nowrap;
+    visibility:collapse;
+
+}
+
+
+.icon input + label {
+/* 체크박스 만들기 누르는 체크박스*/
+    position: absolute;
+    top:800px;
+    left: 89%;    
+    width: 24px;
+    height: 24px;    
+    display: inline-block;
+    cursor: pointer;
+    box-shadow:inset 1px 1px 11px 0px #91b8b3;
+	background-color:rgba(247, 247, 247, 0.103); 
+	border-radius:42px;
+	border:2px solid #56696385;
+	
+    background-repeat: no-repeat;
+	font-family:Arial;
+	padding:7px 8px 7px 8px;
+    flex-wrap: nowrap;
+    text-align: center;
+    position:absolute; 
+    border:2px solid #566963;
+    background:url('icon.jpg') no-repeat,linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);;
+    background-image: url(icon.jpg);       
+}
+
+.icon input:checked + label{ /*checked 됐을때 꾸며주기*/
+    background-color:rgba(247, 247, 247, 0.103);
+    opacity: 0.6;
+    box-shadow: 3px 3px 7px #424242;
+    flex-wrap: nowrap;
+    }
+#buttonicon
+{
+    display: none;
+}
+#buttonicon:checked+label ~ .add { /*체크됐을때 보이게하기 */
+
+    visibility: visible;
+
+}
+#buttonicon:checked+label ~ .edit {
+    visibility: visible;
+}
+
+
+#popup1 {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  background: rgba(247, 247, 247, 0.637);
+  z-index: 1;
+}
+
+#popup1.hide1 {
+  display: none;
+}
+
+#popup1.has-filter1 {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+#popup1 .content1 {
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, .3);
+}
+
+#popup2 {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  background: rgba(247, 247, 247, 0.637);
+  z-index: 1;
+}
+
+#popup2.hide2 {
+  display: none;
+}
+
+#popup2.has-filter2 {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+#popup2 .content2 {
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, .3);
+}
+button{
+
+	box-shadow:inset 1px 1px 11px 0px #91b8b3;
+	background:linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+	background-color:rgb(247, 247, 247);
+	border-radius:42px;
+	border:2px solid #566963;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:7px 8px 7px 8px;
+
+}
+button:hover {
+    
+	background:linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
+	background-color:#6c7c7c;
+}
+button:active {
+	position:relative;
+	top:1px;
+}
+
+
+
+    </style>
+</head>
+<body>
+    <!-- html파트 -->
+
+    <div class = "icon">
+        <input type="checkbox" id ="buttonicon" >
+        <label for = "buttonicon"></label>
+        
+            <div class = "edit">
+                <button onclick="showPopup(true)" type = "inline-block" ><img  src = edit.png></button>
+            </div>
+            <div class = "add">
+                <button onclick="showPopup(true)"><img src = add.png></button>
+            </div>
+            <div id="popup1" class="hide1">
+                <div class="content1">
+                  <p>
+                    뭐 넣고싶은데 ㅋ
+                  </p>
+                  <button onclick="closePopup()"> 넣기</button>
+                  <span></span>
+                  <button onclick="closePopup()"> 닫기</button>
+                </div>
+              </div>
+              <div id="popup2" class="hide2">
+                <div class="content2">
+                  <p>
+                    뭐 빼고싶은데 ㅋ
+                  </p>
+                  <button onclick="closePopup()"> 수정하기</button>
+                  <span></span>
+                  <button onclick="closePopup()"> 닫기</button>
+                </div>
+              </div>
+            <!-- 팝업창 따로따로 어캐하는데 아ㅏㅇㄴ남아ㅔ마ㅔㅁ자엡재아,ㅈㅁㅇㄴㅌ -->
+    </div>
+    <script>
+        function showPopup(hasFilter1) {
+	const popup = document.querySelector('#popup1');
+  
+  if (hasFilter1) {
+  	popup.classList.add('has-filter1');
+  } else {
+  	popup.classList.remove('has-filter1');
+  }
+  
+  popup.classList.remove('hide1');
+}
+
+function closePopup() {
+	const popup = document.querySelector('#popup1');
+  popup.classList.add('hide1');
+}
+
+
+function showPopup(hasFilter2) {
+	const popup = document.querySelector('#popup2');
+  
+  if (hasFilter2) {
+  	popup.classList.add('has-filter2');
+  } else {
+  	popup.classList.remove('has-filter2');
+  }
+  
+  popup.classList.remove('hide2');
+}
+
+function closePopup() {
+	const popup = document.querySelector('#popup2');
+  popup.classList.add('hide2');
+}
+    
+    </script>
+
+</body>
+</html>
