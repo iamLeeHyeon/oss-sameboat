@@ -33,4 +33,22 @@ function addText() {
   const textNode = document.createTextNode(name);
   td.appendChild(textNode);
   document.getElementById("addTable").appendChild(td);
+  if(name === '오이') {
+    const img = document.createElement("img");
+    img.setAttribute('id','img1');
+    document.getElementById("ImageDiv").appendChild(img);
+    document.getElementById('img1').setAttribute('src', './imh/oi.png')
+  }
+  if(name === '당근') {  
+    const img = document.createElement("img");
+  img.setAttribute('id','img2');
+  document.getElementById("ImageDiv").appendChild(img);
+    document.getElementById('img2').setAttribute('src', './imh/carrot.png')
+  }
+  if(name === '감자') {
+    const img = document.createElement("img");
+    img.setAttribute('id','img3');
+    document.getElementById("ImageDiv").appendChild(img);
+    document.getElementById('img3').setAttribute('src', './imh/potato.png')
+  }
 }
