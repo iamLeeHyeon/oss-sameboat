@@ -50,14 +50,13 @@
   top:50%;
   transform:translateY(-50%) rotate(45deg);
 }
-
 .menu-background{
   position:fixed; /* fixed */
   top:50px;
   left:-70%;
   transition:left .5s;
   float: left;
-  width: 250px;
+  width: 240px;
   height: 90%;
   border: 1px solid rgb(226, 226, 226);
   box-shadow: 0 0 15px -5px rgba(0,0,0,0.4);
@@ -72,9 +71,9 @@
 .main-box{
   width:60%;
   height:90%;
-  transform: translate(255px, 0px);
   box-shadow: 0 0 15px -5px rgba(0,0,0,0.4);
   border-radius:8px;
+  transform: translate(255px, 0px);
   background: white;
   border: 1px solid rgb(226, 226, 226);
   position:absolute;
@@ -90,7 +89,7 @@ li{
 }
 a{
     display:block;
-    padding:5px 10px;
+    padding:5px 15px;
     -webkit-box-align: center;
     align-items: center;
     border-bottom:1px solid #DDD;
@@ -100,7 +99,7 @@ a{
     font-size: 16px;
     color:rgb(163, 163, 163);
     border:none;
-    margin: 10px;
+    margin: 0px;
     
 }
 a:hover{
@@ -120,4 +119,101 @@ a:hover{
 }
 .z-index3{
   z-index: 3;
-} /*우선순위
+} /*우선순위*/
+
+style{
+  font-size: 10px;
+  font-family: Roboto, Arial, sans-serif;
+}
+.box-basic{
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  padding: 10px;
+}
+.icon-basic{
+ padding: 5px; 
+ display: flex;
+}
+.box-item-center{
+  align-items: center;
+  justify-content: center;
+}
+#box-title{
+  display: inline-block;
+  padding: 7px 20px;
+}
+#icon-title{
+  width:40px;
+  display: inline-block;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding-top:0;
+}
+
+#icon-content{
+  width:60px;
+  display: inline-block;
+  flex-direction: column;
+  padding-top:0;
+}
+
+#ingredient-bar{
+  padding-top:0;
+  padding-bottom: 0;
+}
+#ingredient-contents{
+  padding-bottom:0;
+}
+
+#line{
+  height: 3px;
+  width:100%;
+  box-shadow: 0 0 15px -5px rgba(0, 0, 0, 0.4);
+  background-color: rgba(187, 187, 187, 0.437);
+  z-index:2;
+  border-radius: 15px;
+  justify-content: center;
+}
+#line-bold{
+  height: 5px;
+  width:100%;
+  box-shadow: 0 0 15px -5px rgba(0,0,0,0.4);
+  background-color: rgba(86, 86, 86, 0.437);
+  z-index:2;
+  border-radius: 15px;
+  justify-content: center;
+}
+
+.column-sort{
+  display: block;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+img{
+  width: 100%;
+  height: 100%;
+}
+.padding-none-10{
+  padding:0px 10px;
+}
+.padding-none-0{
+  padding:0px 0px;
+}
+.ingredient-text{
+  margin: 0;
+  align-items: center;
+  display: flex;
+}
+.margin-8px{
+  margin-left: 8px;
+  margin-right: 8px;
+}
+#icon{
+  
+}
+#contents{
+  margin:5px;
+  display: flex;
+}
