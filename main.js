@@ -21,6 +21,10 @@ function handleExcelDataAll(sheet){
 }
 function handleExcelDataHtml(sheet){
     $("#displayExcelHtml").html(XLSX.utils.sheet_to_html (sheet));
+    const tr = document.querySelectorAll("tr");
+    for(var i=0; i<tr.length; i++) {
+      tr[i].setAttribute('id', 'tr');
+    }
 }
 
 // 출처 : https://github.com/SheetJS/js-xlsx/issues/214
@@ -48,22 +52,28 @@ function saveExcel() {
   XLSX.utils.book_append_sheet(wb, ws, "sheet title");
   XLSX.writeFile(wb,"엑셀.xlsx");
 }
-  const idx = 1;
-function addText() {
-  const tr = document.querySelectorAll("tr");
-  for(var i=0; i<tr.length; i++) {
-    tr[i].setAttribute('id', 'tr');
+  function addText() {
+  const tdAll = document.querySelectorAll("td");
+  for(var i=0; i<tdAll.length; i++) {
+    tdAll[i].setAttribute('id', 'td');
   }
   const tbody = document.querySelector('tbody');
-  const newtr = document.createElement("tr");
+  if(tdAll.length%3 === 0){
+    const tr = document.querySelectorAll("tr");
+    for(var i=0; i<tr.length; i++) {
+      tr[i].setAttribute('id', 'tr');
+    }
+    const newtr = document.createElement("tr");
   newtr.setAttribute('id','newtr');
-  tbody.appendChild(newtr);
+  tbody.appendChild(newtr);}
   const name = document.getElementById('add_text').value;
   const td = document.createElement("td");
   td.setAttribute('id',name);
   const textNode = document.createTextNode(name);
   td.appendChild(textNode);
   document.getElementById('newtr').appendChild(td);
+
+
   if(name === '오이') {
     const img = document.createElement("img");
     img.setAttribute('id','img1');
