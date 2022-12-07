@@ -83,7 +83,7 @@
     visibility: visible;
 }
 
-
+/* edit팝업창 디자인 */
 #popup1 {
   display: flex;
   justify-content:center;
@@ -113,7 +113,7 @@
   border-radius: 5px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, .3);
 }
-
+/* add 팝업창 디자인 */
 #popup2 {
   display: flex;
   justify-content:center;
@@ -143,6 +143,7 @@
   border-radius: 5px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, .3);
 }
+/* 버튼 디자인, 떠있는 아이콘은 체크박스고 누르면 뜨는 두개는 버튼  */
 button{
 
 	box-shadow:inset 1px 1px 11px 0px #91b8b3;
@@ -181,35 +182,48 @@ button:active {
         <label for = "buttonicon"></label>
         
             <div class = "edit">
-                <button onclick="showPopup(true)" type = "inline-block" ><img  src = edit.png></button>
+                <button onclick="showPopup1(true)"><img  src = edit.png></button>
             </div>
             <div class = "add">
-                <button onclick="showPopup(true)"><img src = add.png></button>
+                <button onclick="showPopup2(true)"><img src = add.png></button>
             </div>
             <div id="popup1" class="hide1">
                 <div class="content1">
                   <p>
-                    뭐 넣고싶은데 ㅋ
+                    뭐 빼고싶은데 ㅋ
                   </p>
-                  <button onclick="closePopup()"> 넣기</button>
+                  
+                  <input>
+                  <br>
+                  <br>
+                  <button onclick="closePopup()"> 수정하기</button>
                   <span></span>
+                  <span></span>
+                  <span></span>
+                  
                   <button onclick="closePopup()"> 닫기</button>
                 </div>
               </div>
               <div id="popup2" class="hide2">
                 <div class="content2">
                   <p>
-                    뭐 빼고싶은데 ㅋ
+                    뭐 넣고싶은데 ㅋ
                   </p>
-                  <button onclick="closePopup()"> 수정하기</button>
+                  <input>
+                  <br>
+                  <br>
+                  <button onclick="closePopup()"> 넣기</button>
+                  <span></span>
+                  <span></span>
                   <span></span>
                   <button onclick="closePopup()"> 닫기</button>
                 </div>
               </div>
-            <!-- 팝업창 따로따로 어캐하는데 아ㅏㅇㄴ남아ㅔ마ㅔㅁ자엡재아,ㅈㅁㅇㄴㅌ -->
+            
     </div>
     <script>
-        function showPopup(hasFilter1) {
+      // 팝업창 js코드
+        function showPopup1(hasFilter1) {
 	const popup = document.querySelector('#popup1');
   
   if (hasFilter1) {
@@ -227,7 +241,7 @@ function closePopup() {
 }
 
 
-function showPopup(hasFilter2) {
+function showPopup2(hasFilter2) {
 	const popup = document.querySelector('#popup2');
   
   if (hasFilter2) {
