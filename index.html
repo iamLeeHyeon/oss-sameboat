@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link  href="main.css"  rel="stylesheet" tpye="text/css" />
+  <link  href="/css/main.css"  rel="stylesheet" tpye="text/css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.15.5/xlsx.full.min.js"></script>
   <script
   src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -36,6 +36,7 @@
                 <li id="sauce"><a href="sauce.html">소스</a></li>
                 <li id="fruits"><a href="fruits.html">과일</a></li>
                 <li id="etc"><a href="etc.html">etc</a></li>
+                <li id="save_file"><a href="loading.html">냉장고 채우기</a></li>
         </div>
         </div>
       </div><!-- head --> 
@@ -52,10 +53,11 @@
         </tr>
       </thead>
       <tr id="addTable">
-
-      </tr>
-      <tr>
-        <td>2022-04-11</td>
+        <td>
+            <input type="date" id="dt" onchange="mydate1();" hidden/>
+    <input type="text" id="ndt"  onclick="mydate();" hidden />
+    <input type="button" Value="Date" onclick="mydate();" />
+        </td>
       </tr>
       <tbody>
       </tbody>
@@ -71,8 +73,12 @@
     <div id="text"></div>
     <div ></div>
   </div>
+<<<<<<< HEAD
 
 
+=======
+  
+>>>>>>> 9cf0317e87634e78ca6ea065961b81aeb60e6065
   <script src="./main.js"></script>
 </body>
 </html>
