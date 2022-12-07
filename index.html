@@ -14,6 +14,7 @@
   <title>SAMPLE</title>
 </head>
 <body>
+  <div id="table_wrap pc_view"></div>
   <div class="content" id="content">
     <div class="header">
       <div class="head">
@@ -39,10 +40,11 @@
         </div>
       </div><!-- head --> 
     </div><!-- header -->
-    <a href="#" class="btn" tilte="불러오기" onclick="saveExcel()">
+    <a href="#" class="btn" tilte="저장하기" onclick="saveExcel()">
     <span>저장하기</span>
   </a>
-  <div class="table_wrap pc_view">
+
+  <div class="table_wrap pc_view" id="displayExcelHtml">
     <table class="tavle t_list" id="test">
       <thead>
         <tr id="addTitle">
@@ -62,12 +64,14 @@
 
     </div>
   </div>
-    <button> 불러오기 <input type="file" onchange="readExcel()"> </button>
+    <button> 불러오기 <input type="file" onchange="readExcel(event)"> </button>
     <div>
       <input id= "add_text" tpye="text"><button id="add" onclick="addText()"> 추가</button>
     </div>
     <div id="text"></div>
+    <div ></div>
   </div>
+
 
   <script src="./main.js"></script>
 </body>
