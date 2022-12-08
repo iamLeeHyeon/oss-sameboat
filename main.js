@@ -23,7 +23,21 @@ function handleExcelDataHtml(sheet){
     $("#displayExcelHtml").html(XLSX.utils.sheet_to_html (sheet));
     const tr = document.querySelectorAll("tr");
     for(var i=0; i<tr.length; i++) {
+      const tdPresent = tr[i].querySelectorAll('td');
       tr[i].setAttribute('id', 'tr');
+        tdPresent[0].setAttribute('class', 'tdDate');
+        tdPresent[1].setAttribute('class', 'tdClassification');
+        tdPresent[2].setAttribute('class', 'tdIngredient');
+        const tdValue = tdPresent[2].innerText;
+        tdPresent[2].setAttribute('id', tdValue);
+
+        if(tdValue === '양파') {
+          const img = document.createElement("img");
+          img.setAttribute('id','img1');
+          document.getElementById("ImageDiv").appendChild(img);
+          document.getElementById('img1').setAttribute('src', './imh/oi.png')
+        }
+      
     }
 }
 
@@ -55,14 +69,19 @@ function saveExcel() {
   function addText() {
   const tdAll = document.querySelectorAll("td");
   for(var i=0; i<tdAll.length; i++) {
-    tdAll[i].setAttribute('id', 'td');
+    if(i%3 === 0)
+    tdAll[i].setAttribute('class', 'tdDate');
+    if(i%3 === 1)
+    tdAll[i].setAttribute('class', 'tdClassification');
+    if(i%3 === 2)
+    tdAll[i].setAttribute('class', 'tdIngredient');
   }
   const tbody = document.querySelector('tbody');
   if(tdAll.length%3 === 0){
     const tr = document.querySelectorAll("tr");
-    for(var i=0; i<tr.length; i++) {
-      tr[i].setAttribute('id', 'tr');
-    }
+      for(var i = 0; i<tr.length; i++){
+        tr[i].setAttribute('id', 'tr');
+      }
     const newtr = document.createElement("tr");
   newtr.setAttribute('id','newtr');
   tbody.appendChild(newtr);}
@@ -72,14 +91,13 @@ function saveExcel() {
   const textNode = document.createTextNode(name);
   td.appendChild(textNode);
   document.getElementById('newtr').appendChild(td);
-
-
   if(name === '오이') {
     const img = document.createElement("img");
     img.setAttribute('id','img1');
     document.getElementById("ImageDiv").appendChild(img);
     document.getElementById('img1').setAttribute('src', './imh/oi.png')
   }
+
   if(name === '당근') {  
     const img = document.createElement("img");
   img.setAttribute('id','img2');
