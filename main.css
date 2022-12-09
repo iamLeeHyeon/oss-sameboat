@@ -158,14 +158,12 @@ style{
   display: inline-block;
   flex-direction: column;
   padding-top:0;
+  margin:3px;
 }
 
 #ingredient-bar{
   padding-top:0;
   padding-bottom: 0;
-}
-#ingredient-contents{
-  padding-bottom:0;
 }
 
 #line{
