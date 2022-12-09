@@ -133,8 +133,9 @@ style{
   padding: 10px;
 }
 .icon-basic{
- padding: 5px; 
+ padding: 5px;
  display: flex;
+ border-radius: 15px;
 }
 .box-item-center{
   align-items: center;
@@ -210,10 +211,12 @@ img{
   margin-left: 8px;
   margin-right: 8px;
 }
-#icon{
-  
-}
 #contents{
   margin:5px;
   display: flex;
+}
+
+.cursor-react:hover{
+  background-color: rgba(206, 206, 206, 0.801);
+  transition: 0.2s ease;
 }
