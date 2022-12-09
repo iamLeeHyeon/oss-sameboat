@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link  href="/css/main.css"  rel="stylesheet" tpye="text/css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.15.5/xlsx.full.min.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.15.5/xlsx.full.min.js"></script>
+  <title>SAMPLE</title>
+  <style>
+    .content{height:100vh; background:#ccc; margin:0 auto; position:relative;}
+.head{
+  height:50px;
+  box-shadow: 0 3px 10px rgba(106,106,106,.15);             background:#fff;
+}
+.head .menu{
+  width:50px;
+  height:100%;
+  position:relative;
+}
+.head .menu .res-menu{
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:20px; height:12px;
+  transform:translate(-50%, -50%);
+  cursor:pointer;
+}
+.head .menu .res-menu span{
+  display:block;
+  position:absolute;
+  width:100%;
+  height:2px;
+  background:#333;
+  border-radius:2px;
+  transition: transform .3s;
+}
+.head .menu span:nth-child(1){
+  top:0;left:0; 
+}
+.head .menu span:nth-child(2){
+  top:50%; left:50%;
+  transform:translate(-50%, -50%);
+}
+.head .menu span:nth-child(3){
+  bottom:0;left:0;
+}
+#sideopen {display:none;}
+
+.head input[type="checkbox"]:checked + label > .res-menu  span:nth-child(1){
+  top:50%;
+  transform:translateY(-50%) rotate(-45deg);
+}
+.head input[type="checkbox"]:checked + label > .res-menu  span:nth-child(2){
+  display:none;
+}
+.head input[type="checkbox"]:checked + label > .res-menu  span:nth-child(3){
+  top:50%;
+  transform:translateY(-50%) rotate(45deg);
+}
+
+.menu-background{
+  position:fixed; /* fixed */
+  top:50px;
+  left:-70%;
+  transition:left .5s;              
+  float: left;
+  width: 250px;
+  height: 100%;
+  border: 1px solid rgb(127, 127, 127);
+  box-shadow: 0 0 15px -5px rgba(0,0,0,0.4);
+  border-radius:8px;
+  transform: translate(0px, -4px);
+}
+.head input[type="checkbox"]:checked + label + .menu-background{
+  left:0;
+}
+.edit{ /* edit icon 생성 */
+    position: absolute;
+    top:670px;
+    left: 89%;
+    width: 24px;
+    height: 24px;
+
+    display: inline-block;
+    cursor: pointer;
+
+    flex-wrap: nowrap;
+
+    visibility:collapse;
+}
+.add{ /* add icon 생성*/
+    position: absolute;
+    top:735px;
+    left: 89%;
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    cursor: pointer;
+    flex-wrap: nowrap;
+    visibility:collapse;
+}
+.icon input + label {
+/* 체크박스 만들기 누르는 체크박스*/
+    position: absolute;
+    top:790px;
+    left: 88.5%;
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+    cursor: pointer;
+    font-family:Arial;
+    flex-wrap: nowrap;
+    text-align: center;
+    background: url('icon.png') no-repeat;
+}
+.icon input:checked + label{ /*checked 됐을때 꾸며주기*/
+    background-color:rgba(247, 247, 247, 0.103);
+    opacity: 0.6;
+    /* box-shadow: 3px 3px 7px #424242; */
+    flex-wrap: nowrap;
+    }
+#buttonicon
+{
+    display: none;
+}
+#buttonicon:checked+label ~ .add { /*체크됐을때 보이게하기 */
+
+    visibility: visible;
+
+}
+#buttonicon:checked+label ~ .edit {
+    visibility: visible;
+}
+/* edit팝업창 디자인 */
+#popup1 {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(247, 247, 247, 0.637);
+  z-index: 1;
+}
+
+#popup1.hide1 {
+  display: none;
+}
+
+#popup1.has-filter1 {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+#popup1 .content1 {
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, .3);
+}
+/* add 팝업창 디자인 */
+#popup2 {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(247, 247, 247, 0.637);
+  z-index: 1;
+}
+#popup2.hide2 {
+  display: none;
+}
+#popup2.has-filter2 {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+#popup2 .content2 {
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, .3);
+}
+/* 버튼 디자인, 떠있는 아이콘은 체크박스고 누르면 뜨는 두개는 버튼  */
+.icon button{
+	box-shadow:inset 1px 1px 11px 0px #91b8b3;
+	background:linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+	background-color:rgb(247, 247, 247);
+	border-radius:999px;
+	border:2px solid #566963;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:9px;
+}
+.icon button:hover {
+	background:linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
+	background-color:#6c7c7c;
+}
+.icon button:active {
+	position:relative;
+	top:1px;
+}
+/*------*/
+ul{
+    margin:0;
+    padding:0;
+}
+li{
+    list-style-type:none;
+}
+a{
+    display:block;
+    padding:5px 30px;
+    border-bottom:1px solid #DDD;
+    text-transform:uppercase;
+    text-decoration:none;
+    font-weight:bold;
+    color:#333;
+}
+a:hover{
+    color:#fff;
+    background:#111;
+}
+            #main_page{
+            background-color:darkgrey;
+            }
+            
+            
+  </style>
+</head>
+<body>
+  <div id="table_wrap pc_view"></div>
+  <div class="content" id="content">
+    <div class="header">
+      <div class="head">
+        <div class="menu">
+          <input type="checkbox" id="sideopen">
+          <label for="sideopen">
+          <div class="res-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          </label>
+          <div class="menu-background">
+            <h1><center>나의 냉장고</center></h1>
+            <ul id="main-menu">
+                <li id="main_page"><a href="main_page.html">전체</a></li>
+                <li id="vegetables"><a href="vegetables.html">채소</a></li>
+                <li id="meats"><a href="meats.html">고기</a></li>
+                <li id="sauce"><a href="sauce.html">소스</a></li>
+                <li id="fruits"><a href="fruits.html">과일</a></li>
+                <li id="etc"><a href="etc.html">etc</a></li>
+                <li id="save_file"><a href="loading.html">냉장고 채우기</a></li>                
+        </div>
+        </div>
+        <div class = "icon">
+          <input type="checkbox" id ="buttonicon" >
+          <label for = "buttonicon"></label> 
+              <div class = "edit">
+                  <button onclick="showPopup1(true)"><img  src = edit.png></button>
+              </div>
+              <div class = "add">
+                  <button onclick="showPopup2(true)"><img src = add.png></button>
+              </div>
+              <div id="popup1" class="hide1">
+                  <div class="content1">
+                    <p>
+                      뭐 빼고싶은데 ㅋ
+                    </p>
+  
+                    <input>
+                    <br>
+                    <br>
+                    <button id="" onclick="closePopup1()"> 수정하기</button>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+  
+                    <button onclick="closePopup1()"> 닫기</button>
+                  </div>
+                </div>
+                <div id="popup2" class="hide2">
+                  <div class="content2">
+                    <p>
+                      뭐 넣고싶은데 ㅋ
+                    </p>
+                    <input>
+                    <br>
+                    <br>
+                    <button onclick="closePopup2()"> 넣기</button>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <button onclick="closePopup2()"> 닫기</button>
+                  </div>
+                </div>
+  
+      </div>
+      </div><!-- head --> 
+    </div><!-- header -->
+    <a href="#" class="btn" tilte="저장하기" onclick="saveExcel()">
+        <span>저장하기</span>
+    </a>
+
+  <div class="table_wrap pc_view" id="displayExcelHtml">
+    <table class="tavle t_list" id="test">
+      <thead>
+        <tr id="addTitle">
+
+        </tr>
+      </thead>
+      <tr id="addTable">
+        <td>
+            <input type="date" id="dt" onchange="mydate1();" hidden/>
+    <input type="text" id="ndt"  onclick="mydate();" hidden />
+    <input type="button" Value="Date" onclick="mydate();" />
+        </td>
+      </tr>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+    <button> 불러오기 <input type="file" onchange="readExcel(event)"> </button>
+    <div>
+      <input id= "add_text" tpye="text"><button id="add" onclick="addText()"> 추가</button>
+    </div>
+    <div id="text"></div>
+    <div ></div>
+
+    <div id="ImageDiv">
+
+    </div>
+  </div>
+  
+  <script src = "./main.js"></script>
+</body>
