@@ -5,36 +5,14 @@
     <title>냉장고</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./main.css" rel="stylesheet" type="text/css" />
+    <link href="main.css" rel="stylesheet" type="text/css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.15.5/xlsx.full.min.js"></script>
-    <style id="scroll-properties">
-        ::-webkit-scrollbar {
-            width: 10px;
-            height: 10px;
-            border-radius: 15px;
-        }
-
-        ::-webkit-scrollbar {
-            background: transparent;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #EDECE9;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #D3D1CB;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #AEACA6;
-        }
-    </style>
+    <script src="main.js" type="test/javascript"></script>
 </head>
 
-<body>
+<body style="margin :0">
     <div class="content z-index0">
         <div class="header">
             <div class="head">
@@ -64,24 +42,22 @@
                 </div>
             </div><!-- head -->
         </div><!-- header -->
-    </div>
-    </header>
-    <main>
+        <main>
         <div class="main-box z-index0 column-sort">
             <section>
                 <div id="ingredient-section" class="box-basic column-sort margin-8px padding-none-0">
                     <div id="ingredient-bar" class="box-basic">
                         <h1 id="vegetables-title" class="box-basic padding-none-10">채소</h1>
                         <div id="icon-title" class="box-item-center icon-basic">
-                            <img src="오이.svg" alt="채소">
+                            <img src="cucumber.svg" alt="채소">
                         </div>
                         <div id="line"></div>
                     </div>
                     <div id="ingredient-contents" class="box-basic">
                         <div id="contents" class="box-basic padding-none-0 column-sort">
-                            <div id="icon">
+                            <div id="icon-hm">
                                 <div id="icon-content" class="box-item-center icon-basic cursor-react">
-                                    <img src="오이.svg" alt="채소">
+                                    <img src="cucumber.svg" alt="채소">
                                     <h5 id="ingredient-name" class="ingredient-text"><center>오이</center></h5>
                                     <h6 id="ingredient-date" class="ingredient-text"><center>2022.12.20</center></h6>
                                 </div>
@@ -94,26 +70,86 @@
                     <div id="ingredient-bar" class="box-basic">
                         <h1 id="vegetables-title" class="box-basic padding-none-10">고기</h1>
                         <div id="icon-title" class="box-item-center icon-basic">
-                            <img src="당근.svg" alt="채소">
+                            <img src="carrot.svg" alt="채소">
                         </div>
                         <div id="line"></div>
                     </div>
                     <div id="ingredient-contents" class="box-basic">
                         <div id="contents" class="box-basic padding-none-0 column-sort">
-                            <div id="icon">
+                            <div id="icon-hm">
                                 <div id="icon-content" class="box-item-center icon-basic cursor-react">
-                                    <img src="대파.svg" alt="고기">
+                                    <img src="greenonion.svg" alt="고기">
                                     <h5 id="ingredient-name" class="ingredient-text"><center>고기</center></h5>
                                     <h6 id="ingredient-date" class="ingredient-text"><center>2022.12.30</center></h6>
                                 </div>
                             </div>
                         </div>
                         <div id="line-bold"></div>
-                    </div>    
+                    </div>  
+                </div>  
             </section>
+            <footer>
+                <div class="icon">
+                    <input type="checkbox" id="buttonicon">
+                    <label for="buttonicon"></label>
+            
+                    <div class="edit">
+                        <button onclick="showPopup1(true)"><img src=edit.svg></button>
+                    </div>
+                    <div class="add">
+                        <button onclick="showPopup2(true)"><img src=add.png></button>
+                    </div>
+                    <div id="popup1" class="hide1">
+                        <div class="content1">
+                        <p>
+                            수정 사항을 적어주세요.
+                        </p>
+            
+                        <input>
+                        <br>
+                        <br>
+                        <button onclick="closePopup()"> 수정하기</button>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <button onclick="closePopup()"> 닫기</button>
+                        </div>
+                    </div>
+                    <div id="popup2" class="hide2">
+                        <div class="content2">
+                        <a href="#" class="btn" tilte="저장하기" onclick="saveExcel()">
+                            <span>저장하기</span>
+                        </a>
+                        
+                        
+                        <button> 불러오기 <input type="file" onchange="readExcel(event)"> </button>
+                        <div>
+                            <input id="add_text" type="text"><button id="add" onclick="addText()"> 추가</button>
+                        </div>
+                        <div id="text"></div>
+                        <div></div>
+                        
+                        <div id="ImageDiv">
+                        
+                        
+                        </div>
+                        <br>
+                        
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <button onclick="closePopup()"> 닫기</button>
+                        </div>
+                        
+                        </div>
+                        
+                </div>
+                
+            </footer>
         </div>
-    </main>
-    
+        </main>
+        
+       
+<script src="./main.js"></script>
 </body>
-
 </html>
