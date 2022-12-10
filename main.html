@@ -24,6 +24,16 @@
                             <span></span>
                             <span></span>
                         </div>
+                        <div id="current_date" class="date_menu">
+                            </p>
+                            <script>
+                                date = new Date();
+                                year = date.getFullYear();
+                                month = date.getMonth() + 1;
+                                day = date.getDate();
+                                document.getElementById("current_date").innerHTML = "Today: " + year + "-" + month + "-" + day;
+                            </script>
+                        </div>
                     </label>
                     <div class="menu-background z-index3">
                         <h1>
