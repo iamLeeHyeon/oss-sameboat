@@ -27,6 +27,12 @@
   border-radius:2px;
   transition: transform .3s;
 }
+.head .menu .date_menu {
+    width: 200px;
+    height: 100%;
+    position: relative;
+
+}
 .head .menu span:nth-child(1){
   top:0;left:0; 
 }
@@ -217,4 +223,10 @@ img{
 .cursor-react:hover{
   background-color: rgba(206, 206, 206, 0.801);
   transition: 0.2s ease;
+}
+#current_date {
+    font-family: Arial;
+    position: relative;
+    left: 50px;
+    top: 15px;
 }
