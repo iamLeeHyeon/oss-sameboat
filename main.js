@@ -31,11 +31,11 @@ function handleExcelDataHtml(sheet){
         const tdValue = tdPresent[2].innerText;
         tdPresent[2].setAttribute('id', tdValue);
 
-        if(tdValue === '양파') {
+        if(tdValue === '오이') {
           const img = document.createElement("img");
           img.setAttribute('id','img1');
           document.getElementById("ImageDiv").appendChild(img);
-          document.getElementById('img1').setAttribute('src', './imh/oi.png')
+          document.getElementById('img1').setAttribute('src', './oi.svg')
         }
       
     }
@@ -66,95 +66,127 @@ function saveExcel() {
   XLSX.utils.book_append_sheet(wb, ws, "sheet title");
   XLSX.writeFile(wb,"엑셀.xlsx");
 }
-  function addText() {
+function addText() {
   const tdAll = document.querySelectorAll("td");
-  for(var i=0; i<tdAll.length; i++) {
-    if(i%3 === 0)
-    tdAll[i].setAttribute('class', 'tdDate');
-    if(i%3 === 1)
-    tdAll[i].setAttribute('class', 'tdClassification');
-    if(i%3 === 2)
-    tdAll[i].setAttribute('class', 'tdIngredient');
+  for (var i = 0; i < tdAll.length; i++) {
+    if (i % 3 === 0)
+      tdAll[i].setAttribute('class', 'tdDate');
+    if (i % 3 === 1)
+      tdAll[i].setAttribute('class', 'tdClassification');
+    if (i % 3 === 2)
+      tdAll[i].setAttribute('class', 'tdIngredient');
   }
   const tbody = document.querySelector('tbody');
-  if(tdAll.length%3 === 0){
+  if (tdAll.length % 3 === 0) {
     const tr = document.querySelectorAll("tr");
-      for(var i = 0; i<tr.length; i++){
-        tr[i].setAttribute('id', 'tr');
-      }
+    for (var i = 0; i < tr.length; i++) {
+      tr[i].setAttribute('id', 'tr');
+    }
     const newtr = document.createElement("tr");
-  newtr.setAttribute('id','newtr');
-  tbody.appendChild(newtr);}
+    newtr.setAttribute('id', 'newtr');
+    tbody.appendChild(newtr);
+  }
   const name = document.getElementById('add_text').value;
   const td = document.createElement("td");
-  td.setAttribute('id',name);
+  td.setAttribute('id', name);
   const textNode = document.createTextNode(name);
   td.appendChild(textNode);
   document.getElementById('newtr').appendChild(td);
-  if(name === '오이') {
+  if (name === '오이') {
     const img = document.createElement("img");
-    img.setAttribute('id','img1');
+    img.setAttribute('id', 'img1');
     document.getElementById("ImageDiv").appendChild(img);
-    document.getElementById('img1').setAttribute('src', './imh/oi.png')
+    document.getElementById('img1').setAttribute('src', './cucumber.svg')
   }
-
-  if(name === '당근') {  
+  if (name === '당근') {
     const img = document.createElement("img");
-  img.setAttribute('id','img2');
-  document.getElementById("ImageDiv").appendChild(img);
-    document.getElementById('img2').setAttribute('src', './imh/carrot.png')
-  }
-  if(name === '대파') {
-    const img = document.createElement("img");
-    img.setAttribute('id','img3');
+    img.setAttribute('id', 'img2');
     document.getElementById("ImageDiv").appendChild(img);
-    document.getElementById('img3').setAttribute('src', './imh/greenonion.png')
+    document.getElementById('img2').setAttribute('src', './carrot.svg')
   }
-  if(name === '양배추') {
+  if (name === '대파') {
     const img = document.createElement("img");
-    img.setAttribute('id','img4');
+    img.setAttribute('id', 'img3');
     document.getElementById("ImageDiv").appendChild(img);
-    document.getElementById('img4').setAttribute('src', './imh/cabbage.png')
+    document.getElementById('img3').setAttribute('src', './greenonion.svg')
   }
-  if(name === '가지') {
+  if (name === '양배추') {
     const img = document.createElement("img");
-    img.setAttribute('id','img5');
+    img.setAttribute('id', 'img4');
     document.getElementById("ImageDiv").appendChild(img);
-    document.getElementById('img5').setAttribute('src', './imh/eggplant.png')
+    document.getElementById('img4').setAttribute('src', './cabbage.svg')
   }
-  if(name === '돼지고기') {
+  if (name === '가지') {
     const img = document.createElement("img");
-    img.setAttribute('id','img6');
+    img.setAttribute('id', 'img5');
     document.getElementById("ImageDiv").appendChild(img);
-    document.getElementById('img6').setAttribute('src', './imh/pork.png')
+    document.getElementById('img5').setAttribute('src', './eggplant.svg')
   }
-  if(name === '소고기') {
+  if (name === '돼지고기') {
     const img = document.createElement("img");
-    img.setAttribute('id','img7');
+    img.setAttribute('id', 'img6');
     document.getElementById("ImageDiv").appendChild(img);
-    document.getElementById('img7').setAttribute('src', './imh/beef.png')
+    document.getElementById('img6').setAttribute('src', './pork.svg')
   }
-  if(name === '오리고기') {
+  if (name === '소고기') {
     const img = document.createElement("img");
-    img.setAttribute('id','img8');
+    img.setAttribute('id', 'img7');
     document.getElementById("ImageDiv").appendChild(img);
-    document.getElementById('img8').setAttribute('src', './imh/duckmeat.png')
+    document.getElementById('img7').setAttribute('src', './beef.svg')
   }
-}
-function mydate()
-{
-  //alert("");
-document.getElementById("dt").hidden=false;
-document.getElementById("ndt").hidden=true;
-}
-function mydate1()
-{
- d=new Date(document.getElementById("dt").value);
-dt=d.getDate();
-mn=d.getMonth();
-mn++;
-yy=d.getFullYear();
-document.getElementById("ndt").value=dt+"/"+mn+"/"+yy
-document.getElementById("ndt").hidden=false;
-document.getElementById("dt").hidden=true;
+  if (name === '오리고기') {
+    const img = document.createElement("img");
+    img.setAttribute('id', 'img8');
+    document.getElementById("ImageDiv").appendChild(img);
+    document.getElementById('img8').setAttribute('src', './duckmeat.svg')
+  }
+  if (name === '콜라') {
+    const img = document.createElement("img");
+    img.setAttribute('id', 'img9');
+    document.getElementById("ImageDiv").appendChild(img);
+    document.getElementById('img9').setAttribute('src', './coke.svg')
+  } if (name === '간장') {
+    const img = document.createElement("img");
+    img.setAttribute('id', 'img10');
+    document.getElementById("ImageDiv").appendChild(img);
+    document.getElementById('img10').setAttribute('src', './soysauce.svg')
+  }
+  if (name === '고추장') {
+    const img = document.createElement("img");
+    img.setAttribute('id', 'img11');
+    document.getElementById("ImageDiv").appendChild(img);
+    document.getElementById('img11').setAttribute('src', './kochujang.svg')
+  }
+  if (name === '소주') {
+    const img = document.createElement("img");
+    img.setAttribute('id', 'img12');
+    document.getElementById("ImageDiv").appendChild(img);
+    document.getElementById('img12').setAttribute('src', './soju.svg')
+  } if (name === '복숭아') {
+    const img = document.createElement("img");
+    img.setAttribute('id', 'img13');
+    document.getElementById("ImageDiv").appendChild(img);
+    document.getElementById('img13').setAttribute('src', './peach.svg')
+  }
+  if (name === '사과') {
+    const img = document.createElement("img");
+    img.setAttribute('id', 'img14');
+    document.getElementById("ImageDiv").appendChild(img);
+    document.getElementById('img14').setAttribute('src', './apple.svg')
+  }
+  function mydate() {
+    //alert("");
+    document.getElementById("dt").hidden = false;
+    document.getElementById("ndt").hidden = true;
+  }
+  function mydate1() {
+    d = new Date(document.getElementById("dt").value);
+    dt = d.getDate();
+    mn = d.getMonth();
+    mn++;
+    yy = d.getFullYear();
+    document.getElementById("ndt").value = dt + "/" + mn + "/" + yy
+    document.getElementById("ndt").hidden = false;
+    document.getElementById("dt").hidden = true;
+  }
 }
