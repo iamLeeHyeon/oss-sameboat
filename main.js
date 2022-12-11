@@ -1,3 +1,40 @@
+function showPopup1(hasFilter1) {
+	const popup = document.querySelector('#popup1');
+
+  if (hasFilter1) {
+  	popup.classList.add('has-filter1');
+  } else {
+  	popup.classList.remove('has-filter1');
+  }
+
+  popup.classList.remove('hide1');
+}
+
+function closePopup1() {
+	const popup = document.querySelector('#popup1');
+  popup.classList.add('hide1');
+}
+
+
+function showPopup2(hasFilter2) {
+	const popup = document.querySelector('#popup2');
+
+  if (hasFilter2) {
+  	popup.classList.add('has-filter2');
+  } else {
+  	popup.classList.remove('has-filter2');
+  }
+
+  popup.classList.remove('hide2');
+}
+
+function closePopup1() {
+	const popup = document.querySelector('#popup2');
+  popup.classList.add('hide2');
+}
+
+/*---------------------------------------엑셀기능 js*/
+
 const { json } = require("express");
 
 function readExcel(event){
@@ -189,4 +226,15 @@ function addText() {
     document.getElementById("ndt").hidden = false;
     document.getElementById("dt").hidden = true;
   }
+}
+/*-------------------------------------*/
+function check(event) {
+    if (event.target.checked) {
+      document.getElementById('menu-background').style.left="0px";
+      document.querySelector('section').style.left = "0px";
+    }
+    else {
+      document.getElementById('menu-background').style.left = "-170%"
+      document.querySelector('section').style.left = "-170%";
+    }
 }
