@@ -1,24 +1,59 @@
-.content{height:100vh; background:rgb(240, 240, 240); margin:0 auto; position:relative;}
+.content{height:100vh; 
+  background:rgb(560, 560, 560); 
+  margin:0 auto; 
+  position:relative;}
+
 .head{
   height:50px;
   box-shadow: 0 3px 10px rgba(106,106,106,.15);             
   background:#fff;
   position:sticky;
 }
-.head .menu{
-  width:50px;
-  height:100%;
-  position:relative;
+
+.menu{
+  height: auto;
+  display: flex;
+  flex-direction: row;
 }
-.head .menu .res-menu{
+
+#menu-background{
+  position:relative; /* fixed */
+  left:0%;
+  transition:left .5s;
+  width: 245px;
+  height: 90%;
+  border: 1px solid rgb(226, 226, 226);
+  box-shadow: 0 0 15px -5px rgba(0,0,0,0.4);
+  border-radius:8px;
+  background: white;
+  box-sizing: border-box;
+  margin: 10px;
+  z-index: 8;
+}
+.head input[type="checkbox"]:checked + label + #menu-background{
+  left:0;
+}
+main{
+  display: flex;
+  flex-direction: row;
+}
+.head .res-menu{
   position:absolute;
-  top:50%;
-  left:50%;
+  top:-100000%;
+  left:30px;
   width:20px; height:12px;
   transform:translate(-50%, -50%);
   cursor:pointer;
 }
-.head .menu .res-menu span{
+
+#current_date{
+  font-family:fantasy;
+  position: relative;
+  left:15px;
+  top:15px;
+}
+
+.head .res-menu span{
   display:block;
   position:absolute;
   width:100%;
@@ -27,20 +62,14 @@
   border-radius:2px;
   transition: transform .3s;
 }
-.head .menu .date_menu {
-    width: 200px;
-    height: 100%;
-    position: relative;
-
-}
-.head .menu span:nth-child(1){
+.head .res-menu span:nth-child(1){
   top:0;left:0; 
 }
-.head .menu span:nth-child(2){
+.head .res-menu span:nth-child(2){
   top:50%; left:50%;
   transform:translate(-50%, -50%);
 }
-.head .menu span:nth-child(3){
+.head .res-menu span:nth-child(3){
   bottom:0;left:0;
 }
 #sideopen {display:none;}
@@ -56,35 +85,47 @@
   top:50%;
   transform:translateY(-50%) rotate(45deg);
 }
-.menu-background{
-  position:fixed; /* fixed */
-  top:50px;
-  left:-70%;
-  transition:left .5s;
-  float: left;
-  width: 240px;
-  height: 90%;
-  border: 1px solid rgb(226, 226, 226);
-  box-shadow: 0 0 15px -5px rgba(0,0,0,0.4);
-  border-radius:8px;
-  background: white;
-  transform: translate(18px, 15px);
-  box-sizing: border-box;
-}
-.head input[type="checkbox"]:checked + label + .menu-background{
+
+#main-box{
+  width:100%;
+  height:100%;
   left:0;
-}
-.main-box{
-  width:60%;
-  height:90%;
+  min-width: 180px;
   box-shadow: 0 0 15px -5px rgba(0,0,0,0.4);
   border-radius:8px;
-  transform: translate(255px, 0px);
+  transform: translate(0px, 0px);
   background: white;
   border: 1px solid rgb(226, 226, 226);
+  margin: 10px;
+  float: right;
+  padding: 10px;
+}
+section{
+  width:100%;
+  height:auto;
+  left:0px;
+  margin:0px;
+  display:flex;
+  justify-content:flex-end;
+  float: right;
+  z-index: 0;
+}
+@media(max-width:920px){
+  #menu-background{
+  position: absolute;
+  left: -1000px;
+  }
+  .head .res-menu{
   position:absolute;
-  top:50px;
-  margin: 15px;
+  top:50%;
+  left:30px;
+  width:20px; height:12px;
+  transform:translate(-50%, -50%);
+  cursor:pointer;
+}
+  #current_date{
+    left:55px;
+  }
 }
 ul{
     margin:0;
@@ -172,12 +213,18 @@ style{
   padding-bottom: 0;
 }
 
+#iconhm{
+  display: flex;
+  margin: 10px auto;
+  justify-content: space-around;
+}
+
 #line{
   height: 3px;
   width:100%;
   box-shadow: 0 0 15px -5px rgba(0, 0, 0, 0.4);
   background-color: rgba(187, 187, 187, 0.437);
-  z-index:2;
+  z-index:1;
   border-radius: 15px;
   justify-content: center;
 }
@@ -209,13 +256,13 @@ img{
 .ingredient-text{
   margin: 0;
   align-items: center;
-  display: flex;
+  display: flex;  
 }
 .margin-8px{
   margin-left: 8px;
   margin-right: 8px;
 }
-#contents{
+#contentsss{
   margin:5px;
   display: flex;
 }
@@ -224,9 +271,147 @@ img{
   background-color: rgba(206, 206, 206, 0.801);
   transition: 0.2s ease;
 }
-#current_date {
-    font-family: fantasy;
-    position: relative;
-    left: 50px;
-    top: 15px;
+
+/*-----------------------------------------*/
+
+.edit{ /* edit icon 생성 */
+    position: absolute;
+    bottom: 90px;
+    left: 89%;
+    width: 56px;
+    height: 56px;
+    margin: 6px auto;
+
+    display: flex;
+    cursor: pointer;
+
+    flex-wrap: nowrap;
+
+    visibility:collapse;
+}
+.add{ /* add icon 생성*/
+    position: absolute;
+    bottom:50px;
+    left: 89%;
+    width: 56px;
+    height: 56px;
+    margin: 6px auto;
+    display: flex;
+    cursor: pointer;
+    flex-wrap: nowrap;
+    visibility:collapse;
+}
+.icon input + label {
+/* 체크박스 만들기 누르는 체크박스*/
+    position: fixed;
+    z-index: 4;
+    bottom: 0;
+    left: 88.5%;
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+    cursor: pointer;
+    font-family:Arial;
+    flex-wrap: nowrap;
+    text-align: center;
+    background: url('icon.png') no-repeat;
+}
+.icon input:checked + label{ /*checked 됐을때 꾸며주기*/
+    background-color:rgba(567, 567, 567, 0.103);
+    opacity: 0.6;
+    /* box-shadow: 3px 3px 7px #456562; */
+    flex-wrap: nowrap;
+    }
+#buttonicon
+{
+    display: none;
+}
+#buttonicon:checked+label ~ .add { /*체크됐을때 보이게하기 */
+
+    visibility: visible;
+
+}
+#buttonicon:checked+label ~ .edit {
+    visibility: visible;
+}
+/* edit팝업창 디자인 */
+#popup1 {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(567, 567, 567, 0.637);
+  z-index: 1;
+}
+
+#popup1.hide1 {
+  display: none;
+}
+
+#popup1.has-filter1 {
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  background-color: rgba(150, 150, 150, 0.238);
+  
+}
+
+#popup1 .content1 {
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, .3);
+}
+/* add 팝업창 디자인 */
+#popup2 {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(567, 567, 567, 0.637);
+  z-index: 4;
+}
+#popup2.hide2 {
+  display: none;
+}
+#popup2.has-filter2 {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+#popup2 .content2 {
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, .3);
+}
+/* 버튼 디자인, 떠있는 아이콘은 체크박스고 누르면 뜨는 두개는 버튼  */
+button{
+   box-shadow:inset 1px 1px 11px 0px #91b8b3;
+   background:linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+   background-color:rgb(567, 567, 567);
+   border-radius:999px;
+   border:2px solid #566963;
+   display:inline-block;
+   cursor:pointer;
+   color:#ffffff;
+   font-family:Arial;
+   font-size:15px;
+   font-weight:bold;
+}
+button:hover {
+   background:linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
+   background-color:#6c7c7c;
+}
+button:active {
+   position:relative;
+   top:1px;
 }
