@@ -1,0 +1,15 @@
+input[id="사과"]{
+    display: none;
+}
+.checkbox label + input {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    cursor: pointer;
+    font-family:Arial;
+    flex-wrap: nowrap;
+    text-align: center;
+    border-radius: 20%;
+    background: url('./img/edit.svg') no-repeat;
+}

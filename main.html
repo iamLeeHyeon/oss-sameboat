@@ -1,159 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title>냉장고</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="main.css" rel="stylesheet" type="text/css" />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.15.5/xlsx.full.min.js"></script>
-    <script src="main.js" type="test/javascript"></script>
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link  href="main.css"  rel="stylesheet" tpye="text/css" />
+  <link  href="date.css"  rel="stylesheet" tpye="text/css" />
+  <link  href="test.css"  rel="stylesheet" tpye="text/css" />
+  <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.15.5/xlsx.full.min.js"></script>
+  <title>냉장고</title>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
-
-<body style="margin :0">
-    <div class="content z-index0">
-        <div class="header">
-            <div class="head">
-                <div class="menu">
-                                <input type="checkbox" id="sideopen" onclick="check(event)">
-                <label for="sideopen">
-                    <div class="res-menu">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </label><div id="current_date" class="date_menu">
-                    </p>
-                    <script>
-                        date = new Date();
-                        year = date.getFullYear();
-                        month = date.getMonth() + 1;
-                        day = date.getDate();
-                        document.getElementById("current_date").innerHTML = "Today: " + year + "-" + month + "-" + day;
-                    </script>
-                </div>
-                
-                </div>
-            </div><!-- head -->
-        </div><!-- header -->
-        <main>
-            <div id="contents"> 
-                <div id="menu-background">
-                    <h1>
-                        <center>나의 냉장고</center>
-                    </h1>
-                    <div id="main-menu">
-                        <div class="highlight">
-                            <li id="main_page"><a href="main.html">전체</a></li>
-                            <li id="vegetables"><a href="vegetables.html">채소</a></li>
-                            <li id="meats"><a href="meats.html">고기</a></li>
-                            <li id="sauce"><a href="sauce.html">소스</a></li>
-                            <li id="fruits"><a href="fruits.html">과일</a></li>
-                            <li id="etc"><a href="etc.html">etc</a></li>
-                        </div>
-                </div>
-            </div>
-            </div>
-        <section>
-        <div id="main-box">
-            <!--채소-->
-                <div id="ingredient-section" class="box-basic column-sort margin-8px padding-none-0">
-                    <div id="ingredient-bar" class="box-basic">
-                        <h1 id="vegetables-title" class="box-basic padding-none-10">채소</h1>
-                        <div id="icon-title" class="box-item-center icon-basic">
-                            <img src="cucumber.svg" alt="채소">
-                        </div>
-                        <div id="line"></div>
-                    </div>
-                    <div id="ingredient-contents" class="box-basic">
-                        <div id="contentsss" class="box-basic padding-none-0 column-sort">
-                            <div id="icon-hm">
-                                <div id="icon-content" class="box-item-center icon-basic cursor-react">
-                                    <img src="cucumber.svg" alt="채소">
-                                    <h5 id="ingredient-name" class="ingredient-text"><center>오이</center></h5>
-                                    <h6 id="ingredient-date" class="ingredient-text"><center>2022.12.20</center></h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="line-bold"></div>
-                    </div>
-                </div>
-                <!--고기-->
-                <div id="ingredient-section" class="box-basic column-sort margin-8px padding-none-0">
-                    <div id="ingredient-bar" class="box-basic">
-                        <h1 id="vegetables-title" class="box-basic padding-none-10">고기</h1>
-                        <div id="icon-title" class="box-item-center icon-basic">
-                            <img src="carrot.svg" alt="채소">
-                        </div>
-                        <div id="line"></div>
-                    </div>
-                    <div id="ingredient-contents" class="box-basic">
-                        <div id="contents" class="box-basic padding-none-0 column-sort">
-                            <div id="icon-hm">
-                                <div id="icon-content" class="box-item-center icon-basic cursor-react">
-                                    <img src="beef.svg" alt="고기">
-                                    <h5 id="ingredient-name" class="ingredient-text"><center>고기</center></h5>
-                                    <h6 id="ingredient-date" class="ingredient-text"><center>2022.12.30</center></h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="line-bold"></div>
-                    </div>     
-                </div>
-                <!--소스-->  
-                <div id="ingredient-section" class="box-basic column-sort margin-8px padding-none-0">
-                    <div id="ingredient-bar" class="box-basic">
-                        <h1 id="vegetables-title" class="box-basic padding-none-10">소스</h1>
-                        <div id="icon-title" class="box-item-center icon-basic">
-                            <img src="coke.svg" alt="소스">
-                        </div>
-                        <div id="line"></div>
-                    </div>
-                    
-                    <div id="ingredient-contents" class="box-basic">
-                        <div id="contents" class="box-basic padding-none-0 column-sort">
-                            <div id="icon-hm">
-                                <div id="icon-content" class="box-item-center icon-basic cursor-react">
-                                    <ul class="js-todolist"> </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="line-bold"></div>
-                    </div>
-                </div>
-        </div>
-        <div id="main-box">
-            <div id="ingredient-bar" class="box-basic">
-                <h1 id="vegetables-title" class="box-basic padding-none-10">레시피</h1>
-                <div id="icon-title" class="box-item-center icon-basic">
-                    <img src="carrot.svg" alt="채소">
-                </div>
-                <div id="line"></div>
-            </div>
-            <p class="box-basic">레시피 정보 가져오면 됨
-                가져오면 됨.
-                ㅇ
-                ㅇ
-                ㅇㅇ
+<body style="margin:0">
+  <div class="content z-index0">
+    <div class="header">
+      <div class="head">
+        <div class="menu">
+          <input type="checkbox" id="sideopen" onclick="check(event)">
+          <label for="sideopen">
+          <div class="res-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          </label>
+          <div id="current_date" class="date_menu">
             </p>
+            <script>
+              date = new Date();
+              year = date.getFullYear();
+              month = date.getMonth() + 1;
+              day = date.getDate();
+              document.getElementById("current_date").innerHTML = "Today: " + year + "-" + month + "-" + day;
+            </script>
+          </div>
         </div>
-        </section>
-        <div id="main-box2">
-            <form class="js-todoform">
-                구매일, 분류, 재료 순으로 입력하세요
-                <hr>
-                <input type="text" placeholder="구매일,분류,재료" />
-            </form>
-            <ul class="js-todolist"> </ul>
-        
+      </div><!-- head --> 
+    </div><!-- header -->
+    <main>
+    <div id="contents">
+      <div id="menu-background">
+        <h1>
+          <center>나의 냉장고</center>
+        </h1>
+        <div id="main-menu">
+          <div class="highlight">
+            <li id="main_page"><a style="color:black" href="main.html">전체</a></li>
+            <li id="vegetables"><a href="vegetables.html">채소</a></li>
+            <li id="meats"><a href="meats.html">고기</a></li>
+            <li id="sauce"><a href="sauce.html">소스</a></li>
+            <li id="fruits"><a href="fruits.html">과일</a></li>
+            <li id="etc"><a href="etc.html">etc</a></li>
+          </div>
         </div>
-        </main>
-        
-        <script src="qwoeiqowe.js"></script>
-    </div> 
-    <script src="./main.js"></script>
+      </div>
+    </div>
+    <section>
+    <div id="main-box">
+      <div id="ingredient-bar" class="box-basic">
+    <div class = "icon">
+   
+      <ul class="js-todolist"> </ul>
+     
+      <label for = "buttonicon"></label> 
+          <div class = "add">
+              <button onclick="showPopup2(true)"><img src = /img/edit.svg style="height:24px;width:24px;"></button>
+          </div>
+            <div id="popup2" class="hide2">
+              <div class="content2">
+                <p>
+                    
+                    <form class="js-todoform">
+               
+                        구매일, 분류, 재료 순으로 입력하세요
+                        <hr>
+                        <input type="text" placeholder="구매일,분류,재료" />
+                    </form>
+                    </form>
+                    </form>
+                    </form>
+                    </form>
+                </p>
+                <button onclick="closePopup2()"> 닫기</button>
+              </div>
+            </div>
+
+    </div>
+    </div>
+    </div>
+    <div id="main-box">
+      <iframe id="iframe" title="recipe" width="600px" height="1100px" align="right" frameborder="0" framespacing="0"
+        vspace="0" tabindex="0" seamless></iframe>
+    </div>
+    </section>
+  </main>
+</div>
+
+<script src = "icon.js"></script>
 </body>
+
+<script src="recipe_every.js"></script>
+
 </html>
