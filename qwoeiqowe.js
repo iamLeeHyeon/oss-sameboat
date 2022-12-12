@@ -143,13 +143,6 @@ function painttodo(date, classification, text) {
         imgText.style.height = '100px';
         imgText.style.padding = '25px';
     }
-    if (text === '닭고기') {
-        imgText.setAttribute('id', 'ekfrrhrl');
-        imgText.setAttribute('src', './img/chicken.svg');
-        imgText.style.width = '100px';
-        imgText.style.height = '100px';
-        imgText.style.padding = '25px';
-    }
     if (text === '계란') {
         imgText.setAttribute('id', 'rPfks');
         imgText.setAttribute('src', './img/egg.svg');
